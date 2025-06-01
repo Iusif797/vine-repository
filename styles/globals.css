@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-primary: 'Cormorant Garamond', serif;
+  --font-secondary: 'Montserrat', sans-serif;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-secondary);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 500;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer base {
+  body {
+    @apply text-gray-800;
+  }
+  
+  input, textarea {
+    @apply bg-transparent border-b border-white/30 text-white outline-none px-0 py-2 w-full focus:border-white transition-colors;
+  }
+  
+  input::placeholder, textarea::placeholder {
+    @apply text-white/50;
+  }
+}
+
+/* Стили для блока с коллекцией вин */
+.wine-image-container {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+.wine-image-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.wine-image-container img {
+  transition: transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.wine-image-container:hover img {
+  transform: scale(1.07);
+}
+
+.wine-image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.15));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Эффекты наведения для кнопок */
+a.bg-\[\#a19446\] {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+a.bg-\[\#a19446\]:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+a.bg-\[\#a19446\]:hover:before {
+  width: 100%;
+}
+
+/* Стили для таблицы вин */
+.wine-table-row {
+  transition: all 0.3s ease;
+}
+
+.wine-table-row:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Стили для футера */
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer nav ul {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+footer nav ul li a {
+  transition: opacity 0.2s;
+}
+
+footer nav ul li a:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  footer .grid-cols-7 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .wine-image-container {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
+  .wine-image-container:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  /* Улучшенная навигация в футере на мобильных устройствах */
+  footer .grid-cols-7 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  footer nav ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Улучшенная мобильная верстка для блока с винами */
+  .wine-image-container {
+    transform: none !important;
+  }
+} 
